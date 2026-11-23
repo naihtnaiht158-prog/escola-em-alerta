@@ -1,0 +1,187 @@
+
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Escola em Alerta</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <header class="topo">
+        <div class="marca">
+            <span class="icone">🏫</span>
+            <div>
+                <h1>Escola em Alerta</h1>
+                <p>Gestão de problemas escolares</p>
+            </div>
+        </div>
+    </header>
+
+    <main class="container">
+
+        <section class="boas-vindas">
+            <h2>Painel de acompanhamento</h2>
+            <p>Monitore a frequência dos alunos e os problemas
+            relacionados ao abastecimento de água.</p>
+        </section>
+
+        <!-- INDICADORES -->
+        <section class="indicadores">
+
+            <div class="card">
+                <span>👨‍🎓</span>
+                <h3 id="totalFaltas">0</h3>
+                <p>Faltas registradas</p>
+            </div>
+
+            <div class="card">
+                <span>💧</span>
+                <h3 id="totalAgua">0</h3>
+                <p>Ocorrências de água</p>
+            </div>
+
+            <div class="card">
+                <span>⚠️</span>
+                <h3 id="totalPendentes">0</h3>
+                <p>Problemas pendentes</p>
+            </div>
+
+        </section>
+
+        <!-- MENU -->
+        <nav class="menu">
+            <button onclick="mostrarSecao('frequencia')">
+                Frequência
+            </button>
+
+            <button onclick="mostrarSecao('agua')">
+                Falta de água
+            </button>
+
+            <button onclick="mostrarSecao('historico')">
+                Histórico
+            </button>
+        </nav>
+
+        <!-- FREQUÊNCIA -->
+        <section id="frequencia" class="secao">
+
+            <h2>📚 Registrar falta de aluno</h2>
+
+            <form id="formFalta">
+
+                <label for="aluno">Nome do aluno</label>
+                <input type="text" id="aluno"
+                       placeholder="Nome completo" required>
+
+                <label for="turma">Turma</label>
+                <input type="text" id="turma"
+                       placeholder="Ex: 2º Ano A" required>
+
+                <label for="dataFalta">Data da falta</label>
+                <input type="date" id="dataFalta" required>
+
+                <label for="motivo">Motivo da falta</label>
+                <select id="motivo" required>
+                    <option value="">Selecione</option>
+                    <option value="Doença">Doença</option>
+                    <option value="Problemas familiares">
+                        Problemas familiares
+                    </option>
+                    <option value="Transporte">Transporte</option>
+                    <option value="Não informado">Não informado</option>
+                    <option value="Outro">Outro</option>
+                </select>
+
+                <button type="submit">Registrar falta</button>
+
+            </form>
+
+            <h3>Faltas cadastradas</h3>
+            <div class="tabela-container">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Aluno</th>
+                            <th>Turma</th>
+                            <th>Data</th>
+                            <th>Motivo</th>
+                            <th>Ação</th>
+                        </tr>
+                    </thead>
+                    <tbody id="listaFaltas"></tbody>
+                </table>
+            </div>
+
+        </section>
+
+        <!-- FALTA DE ÁGUA -->
+        <section id="agua" class="secao escondido">
+
+            <h2>💧 Registrar falta de água</h2>
+
+            <form id="formAgua">
+
+                <label for="local">Local afetado</label>
+                <select id="local" required>
+                    <option value="">Selecione</option>
+                    <option value="Banheiros">Banheiros</option>
+                    <option value="Cozinha">Cozinha</option>
+                    <option value="Salas de aula">Salas de aula</option>
+                    <option value="Bebedouros">Bebedouros</option>
+                    <option value="Toda a escola">Toda a escola</option>
+                </select>
+
+                <label for="dataAgua">Data da ocorrência</label>
+                <input type="date" id="dataAgua" required>
+
+                <label for="descricao">Descrição do problema</label>
+                <textarea id="descricao"
+                          placeholder="Descreva o que aconteceu..."
+                          required></textarea>
+
+                <button type="submit">Registrar ocorrência</button>
+
+            </form>
+
+            <h3>Ocorrências de água</h3>
+
+            <div class="tabela-container">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Local</th>
+                            <th>Data</th>
+                            <th>Descrição</th>
+                            <th>Status</th>
+                            <th>Ação</th>
+                        </tr>
+                    </thead>
+                    <tbody id="listaAgua"></tbody>
+                </table>
+            </div>
+
+        </section>
+
+        <!-- HISTÓRICO -->
+        <section id="historico" class="secao escondido">
+
+            <h2>📋 Histórico de ocorrências</h2>
+            <p>Consulte os problemas registrados na escola.</p>
+
+            <div id="listaHistorico"></div>
+
+        </section>
+
+    </main>
+
+    <footer>
+        <p>Escola em Alerta © 2026 - Projeto MVP</p>
+        <p>Educação, acompanhamento e responsabilidade.</p>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
